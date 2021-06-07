@@ -70,35 +70,35 @@
 						isOfflineSupportEnabled: true
 					}
 				);
-                embedded_svc.addEventHandler("afterMinimize", function() {
-                var sidebar = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI');
-                var height = sidebar.clientHeight;
-                var width = sidebar.clientWidth;
-                window.parent.postMessage({
-                    frameHeight: height,
-                    frameWidth: width
-                }, '*');
-                });
+				embedded_svc.addEventHandler("afterMinimize", function() {
+					var sidebar = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI');
+					var height = sidebar.clientHeight;
+					var width = sidebar.clientWidth;
+					window.parent.postMessage({
+					    frameHeight: height,
+					    frameWidth: width
+					}, '*');
+				});
 
-                embedded_svc.addEventHandler("afterMaximize", function() {
-                var container = document.querySelector('.dockableContainer');
-                var height = container.clientHeight;
-                var width = container.clientWidth;
-                window.parent.postMessage({
-                    frameHeight: embedded_svc.settings.widgetHeight,
-                    frameWidth: embedded_svc.settings.widgetWidth
-                }, '*');
-                });
+				embedded_svc.addEventHandler("afterMaximize", function() {
+					var container = document.querySelector('.dockableContainer');
+					var height = container.clientHeight;
+					var width = container.clientWidth;
+					window.parent.postMessage({
+					    frameHeight: embedded_svc.settings.widgetHeight,
+					    frameWidth: embedded_svc.settings.widgetWidth
+					}, '*');
+				});
 
-                embedded_svc.addEventHandler("afterDestroy", function() {
-                var height = document.querySelector('.helpButton').clientHeight;
-                var width = document.querySelector('.helpButton').clientWidth;
-                window.parent.postMessage({
-                    frameHeight: height,
-                    frameWidth: width
-                }, '*');
-                });
-	        };
+				embedded_svc.addEventHandler("afterDestroy", function() {
+					var height = document.querySelector('.helpButton').clientHeight;
+					var width = document.querySelector('.helpButton').clientWidth;
+					window.parent.postMessage({
+					    frameHeight: height,
+					    frameWidth: width
+					}, '*');
+					});
+				};
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
