@@ -14,23 +14,8 @@
 			}
 		</style>
 
-		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.js'></script>
+		<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 		<script type='text/javascript'>
-	      // On page load set the correct size of the iframe to account for either CWAE/Contact Us or Session Continuity.
-	      function helpButtonLoaded() {
-	        var helpButton = document.querySelector('.helpButton');
-	        if (!helpButton) {
-	          window.setTimeout(helpButtonLoaded, 500);
-	          return;
-	        }
-	        var height = helpButton.clientHeight;
-	        var width = helpButton.clientWidth;
-	        window.parent.postMessage({
-	                                  frameHeight: height,
-	                                  frameWidth: width
-	                                  }, '*'); // Used a * but for security reasons you can plug in the domain name.
-	      }
-	      window.onload = helpButtonLoaded();
 			var initESW = function(gslbBaseURL) {
 				embedded_svc.settings.displayHelpButton = true; //Or false
 				embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
@@ -49,9 +34,7 @@
 				//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
 				//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
 				//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
-				embedded_svc.settings.widgetWidth = 320;
-				embedded_svc.settings.widgetHeight = 498;
-				
+
 				embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 
@@ -70,35 +53,7 @@
 						isOfflineSupportEnabled: true
 					}
 				);
-				embedded_svc.addEventHandler("afterMinimize", function() {
-					var sidebar = document.querySelector('.embeddedServiceSidebarMinimizedDefaultUI');
-					var height = sidebar.clientHeight;
-					var width = sidebar.clientWidth;
-					window.parent.postMessage({
-					    frameHeight: height,
-					    frameWidth: width
-					}, '*');
-				});
-
-				embedded_svc.addEventHandler("afterMaximize", function() {
-					var container = document.querySelector('.dockableContainer');
-					var height = container.clientHeight;
-					var width = container.clientWidth;
-					window.parent.postMessage({
-					    frameHeight: embedded_svc.settings.widgetHeight,
-					    frameWidth: embedded_svc.settings.widgetWidth
-					}, '*');
-				});
-
-				embedded_svc.addEventHandler("afterDestroy", function() {
-					var height = document.querySelector('.helpButton').clientHeight;
-					var width = document.querySelector('.helpButton').clientWidth;
-					window.parent.postMessage({
-					    frameHeight: height,
-					    frameWidth: width
-					}, '*');
-					});
-				};
+			};
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
