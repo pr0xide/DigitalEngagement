@@ -6,11 +6,11 @@
 		ESW
 		<style type='text/css'>
 			.embeddedServiceHelpButton .helpButton .uiButton {
-				background-color: #005290;
+				background-color: #003B71;
 				font-family: "Arial", sans-serif;
 			}
 			.embeddedServiceHelpButton .helpButton .uiButton:focus {
-				outline: 1px solid #005290;
+				outline: 1px solid #003B71;
 			}
 		</style>
 
@@ -39,25 +39,25 @@
 				embedded_svc.settings.entryFeature = 'LiveAgent';
 
 				embedded_svc.init(
-					'https://purujoshi-dev-ed.my.salesforce.com',
-					'https://defaulttest-developer-edition.ap8.force.com/LightningTest',
+					'https://kpnationalconsumersales--kpuat.my.salesforce.com',
+					'https://kpuat-explorekp.cs197.force.com/Medicare',
 					gslbBaseURL,
-					'00D0o000000TAfU',
-					'EmbServiceDepOne',
+					'00D040000008aKC',
+					'Medicare_203346',
 					{
-						baseLiveAgentContentURL: 'https://c.la1-c2-hnd.salesforceliveagent.com/content',
-						deploymentId: '5720o000000Xwae',
-						buttonId: '5730o000000Xxb5',
-						baseLiveAgentURL: 'https://d.la1-c2-hnd.salesforceliveagent.com/chat',
-						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I0o000000L0f0EAC_172de2df9b0',
-						isOfflineSupportEnabled: true
+						baseLiveAgentContentURL: 'https://c.la3-c1cs-ia4.salesforceliveagent.com/content',
+						deploymentId: '57204000000CaWG',
+						buttonId: '57304000000CaSK',
+						baseLiveAgentURL: 'https://d.la3-c1cs-ia4.salesforceliveagent.com/chat',
+						eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I8A0000004CnEUAU_17667c7ed96',
+						isOfflineSupportEnabled: false
 					}
 				);
 			};
 
 			if (!window.embedded_svc) {
 				var s = document.createElement('script');
-				s.setAttribute('src', 'https://purujoshi-dev-ed.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+				s.setAttribute('src', 'https://kpnationalconsumersales--kpuat.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 				s.onload = function() {
 					initESW(null);
 				};
